@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!-- Form for creating new post -->
+<div class="container my-3">
+    <h4 >NEW TASK</h4>
+    <form action="/" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name='title' class="form-control" id="title" required>
+
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" name="desc" class="form-control" id="desc" required>
+        </div>
+
+        <button type="submit" class="btn btn-dark">ADD</button>
+    </form>
+</div>
+
+<!-- Table to show all the available post -->
+<div class="container my-5">
+    <h4>ALL TASKS</h4>
+    {% if all_todos|length == 0 %}
+    <div class="alert alert-secondary" role="alert">
+        No existing items. Add a new item now!
+    </div>
+
+    {% else %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Datetime </th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>.
+
+            {% for todo in all_todos %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{todo.title}}</td>
+                <td>{{todo.desc}}</td>
+                <td>{{todo.date_created}}</td>
+                <td>
+                    <a href="/update/{{todo.sno}}" type="button"
+                        class="btn btn-outline-dark btn-sm mx-1 my-1">UPDATE</a>
+                    <a href="/delete/{{todo.sno}}" type="button"
+                        class="btn btn-outline-dark btn-sm mx-1 my-1">DELETE</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+</body>
+
+</html>
+{% endblock body %}
