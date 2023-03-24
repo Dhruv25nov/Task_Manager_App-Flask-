@@ -24,7 +24,7 @@
 ## Steps to run the app at local system
 
 1. Clone the repository
-2. Run `pip install -r requirements.txt`
+2. Run `pip install -r requirement.txt`
 3. Run `python app.js`
 4. Go to  [http://localhost:8000/](http://localhost:8000/)
 
